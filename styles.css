@@ -186,6 +186,9 @@ a { color: inherit; }
 }
 .method-strip li { display: inline-flex; align-items: center; gap: 10px; }
 .method-icon { color: var(--accent-deep); font-size: 1.05rem; }
+.strip-note {
+  text-align: center; font-size: .85rem; color: var(--muted); margin-top: 22px;
+}
 
 /* ---------- Product cards ---------- */
 .card-grid {
@@ -260,6 +263,20 @@ a { color: inherit; }
 .tab.is-active { background: var(--accent); border-color: var(--accent); color: #06231b; }
 .code-window-dark { border-color: rgba(255,255,255,.1); }
 
+.dev-subhead {
+  margin-top: 34px; font-size: .8rem; text-transform: uppercase;
+  letter-spacing: .12em; color: rgba(255,255,255,.5); font-weight: 600;
+}
+.chip-list {
+  list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;
+}
+.chip-list li {
+  font: 500 .78rem var(--mono);
+  padding: 7px 13px; border-radius: 99px;
+  border: 1px solid rgba(255,255,255,.16); color: rgba(255,255,255,.78);
+}
+.chip-list-ink li { border-color: var(--line); color: var(--ink-soft); background: var(--surface); }
+
 /* ---------- Dashboard mockup ---------- */
 .dash {
   display: grid; grid-template-columns: 200px 1fr;
@@ -313,6 +330,44 @@ a { color: inherit; }
 }
 .sec-item h3 { font-size: .98rem; }
 .sec-item p { color: var(--muted); font-size: .87rem; margin-top: 7px; }
+.trust-note {
+  margin-top: 40px; max-width: 640px;
+  padding: 18px 22px; border-left: 3px solid var(--accent-deep);
+  background: var(--surface); border-radius: 0 10px 10px 0;
+  font-size: .95rem; color: var(--ink-soft);
+}
+
+/* ---------- Roadmap ---------- */
+.roadmap {
+  list-style: none; counter-reset: step;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+}
+.roadmap li {
+  position: relative; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); padding: 24px 22px; box-shadow: var(--shadow-sm);
+}
+.roadmap li.is-live { border-color: var(--accent-deep); }
+.roadmap-status {
+  display: inline-block; font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em;
+  padding: 3px 10px; border-radius: 99px; margin-bottom: 12px;
+  background: var(--tint); color: var(--muted);
+}
+.is-live .roadmap-status { background: var(--accent-wash); color: var(--accent-deep); }
+.roadmap strong { display: block; font-size: 1.02rem; letter-spacing: -0.01em; }
+.roadmap p { color: var(--muted); font-size: .86rem; margin-top: 6px; }
+
+/* ---------- Partners page ---------- */
+.hero-partners { padding-bottom: 72px; }
+.hero-copy-wide { max-width: 780px; }
+.sla-panel {
+  background: var(--dark-2); border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px; padding: 34px 32px;
+}
+.sla-panel h3 { color: #fff; font-size: 1.15rem; margin-bottom: 20px; }
+.sla-list { list-style: none; display: grid; gap: 16px; }
+.sla-list li { color: rgba(255,255,255,.62); font-size: .9rem; }
+.sla-list strong { display: block; color: #fff; font-size: .98rem; margin-bottom: 2px; }
 
 /* ---------- Why partner ---------- */
 .why-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; align-items: start; }
@@ -401,6 +456,7 @@ a { color: inherit; }
   .card-grid { grid-template-columns: repeat(2, 1fr); }
   .sec-grid { grid-template-columns: repeat(2, 1fr); }
   .built-for { grid-template-columns: repeat(3, 1fr); }
+  .roadmap { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .why-copy { position: static; }
   .section { padding: 80px 0; }
@@ -411,6 +467,7 @@ a { color: inherit; }
   body { font-size: 16px; }
   .card-grid, .sec-grid { grid-template-columns: 1fr; }
   .built-for { grid-template-columns: repeat(2, 1fr); }
+  .roadmap { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .dash { grid-template-columns: 1fr; }
   .dash-side { display: none; }

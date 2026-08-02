@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lebaneeds Payments — Financial Infrastructure for Modern Businesses</title>
-<meta name="description" content="Lebaneeds builds payment technology and financial infrastructure. Integrate local and international payment methods through one secure API, in partnership with licensed providers.">
+<title>Lebaneeds Connect — Financial Infrastructure for Modern Businesses</title>
+<meta name="description" content="Lebaneeds Connect is the payment infrastructure platform by Lebaneeds Payments. Integrate local and international payment methods through one secure API, in partnership with licensed providers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 32 32" width="28" height="28"><rect width="32" height="32" rx="7" fill="var(--ink)"/><path d="M10 8v13h12v3H7V8h3z" fill="#fff"/><rect x="14" y="8" width="8" height="3" fill="var(--accent)"/></svg>
       </span>
-      <span class="brand-name">Lebaneeds<span class="brand-sub">Payments</span></span>
+      <span class="brand-name">Lebaneeds<span class="brand-sub">Connect</span></span>
     </a>
     <nav class="main-nav" aria-label="Primary">
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">
@@ -32,7 +32,7 @@
         <li><a href="#products">Products</a></li>
         <li><a href="#developers">Developers</a></li>
         <li><a href="#security">Security</a></li>
-        <li><a href="#enterprise">Enterprise</a></li>
+        <li><a href="partners.html">Partners</a></li>
         <li><a href="#about">Company</a></li>
         <li class="nav-cta"><a class="btn btn-primary btn-sm" href="#contact">Request Partnership</a></li>
       </ul>
@@ -85,17 +85,19 @@
     </div>
   </section>
 
-  <!-- ============ INTEGRATIONS STRIP ============ -->
-  <section class="integrations" aria-label="Payment method coverage">
+  <!-- ============ INTEGRATION ECOSYSTEM ============ -->
+  <section class="integrations" aria-label="Integration ecosystem" id="ecosystem">
     <div class="container">
-      <p class="strip-label">Payment methods orchestrated through licensed providers</p>
+      <p class="strip-label">An open orchestration layer for the payment ecosystem</p>
       <ul class="method-strip">
-        <li><span class="method-icon" aria-hidden="true">◧</span>Local Wallet</li>
-        <li><span class="method-icon" aria-hidden="true">⇄</span>Bank Transfer</li>
-        <li><span class="method-icon" aria-hidden="true">▭</span>Card Payments</li>
-        <li><span class="method-icon" aria-hidden="true">◍</span>Cash Payments</li>
-        <li><span class="method-icon" aria-hidden="true">＋</span>Future Partners</li>
+        <li><span class="method-icon" aria-hidden="true">✓</span>Digital Wallets</li>
+        <li><span class="method-icon" aria-hidden="true">✓</span>Banks</li>
+        <li><span class="method-icon" aria-hidden="true">✓</span>Card Acquirers</li>
+        <li><span class="method-icon" aria-hidden="true">✓</span>Cash Networks</li>
+        <li><span class="method-icon" aria-hidden="true">✓</span>Payment Gateways</li>
+        <li><span class="method-icon" aria-hidden="true">✓</span>Fintech APIs</li>
       </ul>
+      <p class="strip-note">Provider-agnostic by design. New providers are added behind the same API — no re-integration for merchants.</p>
     </div>
   </section>
 
@@ -161,34 +163,55 @@
   <section class="section section-tint" id="architecture">
     <div class="container arch-grid">
       <div class="arch-copy reveal">
-        <p class="eyebrow">How it works</p>
-        <h2>One integration between your business and the payment ecosystem</h2>
-        <p class="section-lede">Lebaneeds is the technology layer. Funds move through licensed payment providers and banks; we orchestrate the connection, the data and the developer experience.</p>
+        <p class="eyebrow">Technical architecture</p>
+        <h2>Built the way payment systems are actually built</h2>
+        <p class="section-lede">Lebaneeds is the technology layer. Funds move through licensed payment providers and banks; we orchestrate routing, provider adapters, webhooks and reconciliation around them.</p>
         <ul class="check-list">
-          <li>Your systems talk to one stable API surface</li>
-          <li>Providers are added and routed behind the scenes</li>
-          <li>Settlement is executed by licensed partners</li>
+          <li>Merchants talk to one stable, versioned API surface</li>
+          <li>A routing engine selects the right provider per transaction</li>
+          <li>Isolated provider adapters absorb each partner's specifics</li>
+          <li>Signed webhooks propagate state; settlement is executed by licensed partners</li>
         </ul>
       </div>
-      <div class="arch-diagram reveal delay-1" role="img" aria-label="Architecture: Business connects to the Lebaneeds API, which orchestrates payment providers, which handle settlement.">
+      <div class="arch-diagram reveal delay-1" role="img" aria-label="Payment flow: Merchant calls the Lebaneeds Payments API, the routing engine selects a provider adapter, the licensed payment provider processes the payment, webhooks report state, settlement is executed by the licensed partner, and funds reach the merchant.">
         <div class="arch-node">
-          <span class="arch-node-label">Business</span>
-          <span class="arch-node-sub">Your app, platform or store</span>
+          <span class="arch-node-label">Merchant</span>
+          <span class="arch-node-sub">App, platform or store initiates a payment</span>
         </div>
         <div class="arch-arrow" aria-hidden="true"><span></span></div>
         <div class="arch-node arch-node-core">
-          <span class="arch-node-label">Lebaneeds API</span>
-          <span class="arch-node-sub">Orchestration · Security · Reporting</span>
+          <span class="arch-node-label">Lebaneeds Payments API</span>
+          <span class="arch-node-sub">Auth · Validation · Idempotency</span>
+        </div>
+        <div class="arch-arrow" aria-hidden="true"><span></span></div>
+        <div class="arch-node arch-node-core">
+          <span class="arch-node-label">Routing Engine</span>
+          <span class="arch-node-sub">Method, currency &amp; availability-aware routing</span>
+        </div>
+        <div class="arch-arrow" aria-hidden="true"><span></span></div>
+        <div class="arch-node arch-node-core">
+          <span class="arch-node-label">Provider Adapter</span>
+          <span class="arch-node-sub">Isolated integration per partner protocol</span>
         </div>
         <div class="arch-arrow" aria-hidden="true"><span></span></div>
         <div class="arch-node">
-          <span class="arch-node-label">Payment Providers</span>
-          <span class="arch-node-sub">Licensed wallets, banks &amp; acquirers</span>
+          <span class="arch-node-label">Licensed Payment Provider</span>
+          <span class="arch-node-sub">Wallet, bank or acquirer processes the payment</span>
+        </div>
+        <div class="arch-arrow" aria-hidden="true"><span></span></div>
+        <div class="arch-node">
+          <span class="arch-node-label">Webhook</span>
+          <span class="arch-node-sub">Signed events update payment state in real time</span>
         </div>
         <div class="arch-arrow" aria-hidden="true"><span></span></div>
         <div class="arch-node">
           <span class="arch-node-label">Settlement</span>
-          <span class="arch-node-sub">Funds settled by regulated partners</span>
+          <span class="arch-node-sub">Funds settled by the regulated partner</span>
+        </div>
+        <div class="arch-arrow" aria-hidden="true"><span></span></div>
+        <div class="arch-node">
+          <span class="arch-node-label">Merchant</span>
+          <span class="arch-node-sub">Reconciled, reported, done</span>
         </div>
       </div>
     </div>
@@ -206,6 +229,12 @@
           <li>Idempotency keys on every mutating request</li>
           <li>HMAC-signed webhooks with automatic retries</li>
           <li>Sandbox keys and test payment methods</li>
+        </ul>
+        <h3 class="dev-subhead">Everything the docs cover</h3>
+        <ul class="chip-list" aria-label="Developer platform capabilities">
+          <li>Authentication</li><li>API Keys</li><li>OAuth</li><li>Webhooks</li>
+          <li>Idempotency Keys</li><li>Retry Policy</li><li>Error Codes</li>
+          <li>SDKs</li><li>Rate Limits</li><li>Sandbox</li>
         </ul>
         <a class="btn btn-light" href="#contact">Get API access</a>
       </div>
@@ -323,7 +352,35 @@
         <div class="sec-item reveal"><h3>Role-Based Access</h3><p>Granular permissions across teams, merchants and partner organizations.</p></div>
         <div class="sec-item reveal"><h3>99.9% Uptime</h3><p>Redundant infrastructure with continuous monitoring and status reporting.</p></div>
         <div class="sec-item reveal"><h3>Rate Limiting</h3><p>Adaptive throttling that protects the platform and every integration on it.</p></div>
+        <div class="sec-item reveal"><h3>API Versioning</h3><p>Explicit versions and a published deprecation policy — breaking changes never surprise you.</p></div>
+        <div class="sec-item reveal"><h3>Idempotent Requests</h3><p>Retries are safe by design; duplicate charges are structurally impossible.</p></div>
+        <div class="sec-item reveal"><h3>Encrypted Secrets</h3><p>Credentials and provider secrets held in managed vaults, never in code or logs.</p></div>
+        <div class="sec-item reveal"><h3>Least Privilege</h3><p>Every service, key and operator gets the minimum access required — nothing more.</p></div>
+        <div class="sec-item reveal"><h3>Monitoring</h3><p>Continuous observability across every provider path with alerting on anomalies.</p></div>
+        <div class="sec-item reveal"><h3>Incident Response</h3><p>Defined severity levels, escalation paths and post-incident reviews for every event.</p></div>
       </div>
+      <p class="trust-note reveal">Built using modern secure engineering practices with enterprise-grade API architecture. We don't claim certifications we don't hold — we publish how the platform is engineered and let the architecture speak.</p>
+    </div>
+  </section>
+
+  <!-- ============ ROADMAP ============ -->
+  <section class="section" id="roadmap">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Platform roadmap</p>
+        <h2>Payments is the first module, not the last</h2>
+        <p class="section-lede">Lebaneeds Connect is built as a platform. Each module ships on the same API core, the same security model and the same dashboard.</p>
+      </div>
+      <ol class="roadmap">
+        <li class="reveal is-live"><span class="roadmap-status">Live</span><strong>Payments</strong><p>Core payment creation, capture and orchestration.</p></li>
+        <li class="reveal is-live"><span class="roadmap-status">Live</span><strong>Payment Links</strong><p>Hosted, no-code payment pages.</p></li>
+        <li class="reveal is-live"><span class="roadmap-status">Live</span><strong>Merchant Checkout</strong><p>Embeddable checkout SDK for web and mobile.</p></li>
+        <li class="reveal is-live"><span class="roadmap-status">Live</span><strong>QR</strong><p>Static and dynamic QR acceptance.</p></li>
+        <li class="reveal"><span class="roadmap-status">Next</span><strong>Subscriptions</strong><p>Scheduled charging on any connected method.</p></li>
+        <li class="reveal"><span class="roadmap-status">Next</span><strong>Marketplace Split Payments</strong><p>Multi-party amounts, fees and payouts.</p></li>
+        <li class="reveal"><span class="roadmap-status">Planned</span><strong>Recurring Billing</strong><p>Invoicing, dunning and revenue tooling.</p></li>
+        <li class="reveal"><span class="roadmap-status">Planned</span><strong>Developer Platform</strong><p>Apps, extensions and partner-built integrations.</p></li>
+      </ol>
     </div>
   </section>
 
@@ -334,7 +391,10 @@
         <p class="eyebrow">Why partner with Lebaneeds</p>
         <h2>A technology partner, not another intermediary</h2>
         <p class="section-lede">We take on the engineering, the merchant experience and the developer ecosystem — so providers and platforms can grow volume without growing complexity.</p>
-        <a class="btn btn-primary" href="#contact">Start a conversation</a>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="partners.html">For Payment Partners</a>
+          <a class="btn btn-ghost" href="#contact">Start a conversation</a>
+        </div>
       </div>
       <ul class="why-list">
         <li class="reveal"><strong>Single API</strong>One integration reaches every method and provider we connect.</li>
@@ -371,7 +431,7 @@
     <div class="container about-inner reveal">
       <p class="eyebrow">About</p>
       <h2>A software company for financial infrastructure</h2>
-      <p class="about-text">Lebaneeds Payments develops payment technology and financial infrastructure that enables businesses to integrate modern payment experiences through secure APIs and strategic partnerships with licensed providers.</p>
+      <p class="about-text">Lebaneeds Payments develops payment technology and financial infrastructure that enables businesses to integrate modern payment experiences through secure APIs and strategic partnerships with licensed providers. Lebaneeds Connect is our platform: Payments is the first product built on it, with identity, business and banking APIs on the horizon.</p>
       <p class="about-note">Lebaneeds Payments is a technology company. Payment services and settlement are performed by licensed financial partners.</p>
     </div>
   </section>
@@ -432,7 +492,7 @@
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" width="26" height="26"><rect width="32" height="32" rx="7" fill="#fff"/><path d="M10 8v13h12v3H7V8h3z" fill="var(--ink)"/><rect x="14" y="8" width="8" height="3" fill="var(--accent)"/></svg>
         </span>
-        <span class="brand-name brand-name-light">Lebaneeds<span class="brand-sub">Payments</span></span>
+        <span class="brand-name brand-name-light">Lebaneeds<span class="brand-sub">Connect</span></span>
       </a>
       <p>Financial infrastructure for modern businesses.</p>
     </div>
@@ -455,7 +515,7 @@
       <a href="#about">About</a>
       <a href="#enterprise">Enterprise</a>
       <a href="#contact">Contact</a>
-      <a href="#contact">Partnerships</a>
+      <a href="partners.html">For Payment Partners</a>
     </nav>
   </div>
   <div class="container footer-legal">
