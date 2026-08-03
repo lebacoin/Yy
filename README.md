@@ -5,12 +5,14 @@ Enterprise B2B fintech infrastructure landing page for **Lebaneeds Payments**.
 Static site — no build step required.
 
 ```
-index.html   # page markup
+connect.html # Connect product site (index of connect.lebaneeds.com)
+home.html    # brand landing (lebaneeds.com)
+partners.html# For Payment Partners page
 styles.css   # design system & responsive layout
 script.js    # mobile nav, API example tabs, scroll reveals
 ```
 
-Open `index.html` in a browser, or serve locally:
+Open `connect.html` or `home.html` in a browser, or serve locally:
 
 ```sh
 python3 -m http.server 8000
