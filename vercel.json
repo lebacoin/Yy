@@ -1,5 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "lebaneeds.com" }],
+      "destination": "/home.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.lebaneeds.com" }],
+      "destination": "/home.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
