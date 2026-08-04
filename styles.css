@@ -321,6 +321,14 @@ a { color: inherit; }
 }
 .pill-ok { background: var(--accent-wash); color: var(--accent-deep); }
 .pill-pending { background: rgba(217, 164, 22, .12); color: #9a7208; }
+.mock-note { text-align: center; font-size: .8rem; color: var(--muted); margin-top: 16px; }
+.form-note a { color: var(--accent-deep); }
+
+/* ---------- Privacy page ---------- */
+.privacy-body { margin-top: 40px; }
+.privacy-body h3 { margin-top: 32px; font-size: 1.1rem; }
+.privacy-body p { color: var(--ink-soft); margin-top: 10px; max-width: 46em; }
+.privacy-body a { color: var(--accent-deep); }
 
 /* ---------- Security ---------- */
 .sec-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }

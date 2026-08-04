@@ -43,6 +43,23 @@
     });
   });
 
+  /* ---------- Contact forms (mailto composer) ---------- */
+  document.querySelectorAll("form[data-mailform]").forEach(function (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      var lines = [];
+      form.querySelectorAll("input, select, textarea").forEach(function (f) {
+        var label = form.querySelector('label[for="' + f.id + '"]');
+        lines.push((label ? label.textContent : f.name) + ": " + f.value);
+      });
+      var href = "mailto:" + form.dataset.mailform +
+        "?subject=" + encodeURIComponent(form.dataset.subject || "Partnership request") +
+        "&body=" + encodeURIComponent(lines.join("\n"));
+      window.location.href = href;
+    });
+  });
+
   /* ---------- Scroll reveal ---------- */
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
