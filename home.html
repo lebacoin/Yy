@@ -5,6 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lebaneeds — Payment Infrastructure for the Next Generation of Commerce</title>
 <meta name="description" content="Lebaneeds builds financial infrastructure: one API connecting businesses to wallets, banks, cards and cash networks through licensed partners.">
+<link rel="canonical" href="https://lebaneeds.com/">
+<meta name="theme-color" content="#081820">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lebaneeds">
+<meta property="og:title" content="Lebaneeds — Payment Infrastructure for the Next Generation of Commerce">
+<meta property="og:description" content="One API connecting businesses to wallets, banks, cards and cash networks through licensed partners.">
+<meta property="og:url" content="https://lebaneeds.com/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lebaneeds — Payment Infrastructure for the Next Generation of Commerce">
+<meta name="twitter:description" content="One API connecting businesses to wallets, banks, cards and cash networks through licensed partners.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Lebaneeds Payments","url":"https://lebaneeds.com/","email":"partners@lebaneeds.com","description":"Lebaneeds Payments develops payment technology and financial infrastructure that enables businesses to integrate modern payment experiences through secure APIs and strategic partnerships with licensed providers.","sameAs":["https://connect.lebaneeds.com/"]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -57,7 +70,10 @@ nav.top a:not(.cta):hover{color:#fff}
 .cta:hover{transform:translateY(-2px);box-shadow:0 12px 32px -8px rgba(45,212,167,.45)}
 .cta.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.22)}
 .cta.ghost:hover{border-color:#fff;box-shadow:none}
-.menu-btn{display:none}
+.menu-btn{display:none;background:none;border:0;padding:12px;cursor:pointer;flex-direction:column;gap:5px}
+.menu-bar{width:22px;height:2px;background:#fff;display:block;transition:transform .2s ease}
+.menu-btn[aria-expanded="true"] .menu-bar:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] .menu-bar:last-child{transform:translateY(-3.5px) rotate(-45deg)}
 
 /* ---------- hero ---------- */
 .hero{min-height:100svh;display:grid;align-items:center;padding:150px 0 80px;position:relative}
@@ -72,7 +88,7 @@ h1 .flip{display:inline-block;color:var(--teal);position:relative}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
 .hero-stats{display:flex;gap:40px;margin-top:52px;list-style:none;flex-wrap:wrap}
 .hero-stats strong{display:block;font-size:1.7rem;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.hero-stats span{font-size:.82rem;color:rgba(255,255,255,.5)}
+.hero-stats span{font-size:.82rem;color:rgba(255,255,255,.64)}
 
 /* ---------- 3D hero scene ---------- */
 .scene{perspective:1400px;position:relative;height:540px}
@@ -165,7 +181,7 @@ h2{font-size:clamp(2rem,4.4vw,3.3rem);letter-spacing:-.03em;line-height:1.06;fon
 .numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;text-align:center}
 .numbers strong{display:block;font-size:clamp(2.2rem,4.4vw,3.4rem);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:#fff}
 .numbers strong em{font-style:normal;color:var(--teal)}
-.numbers span{font-size:.86rem;color:rgba(255,255,255,.55)}
+.numbers span{font-size:.86rem;color:rgba(255,255,255,.66)}
 
 /* trust / about */
 .trust{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
@@ -219,6 +235,15 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:60px 0 40px;background
   section{padding:96px 0}
   nav.top ul{display:none}
   .menu-btn{display:inline-flex}
+  nav.top ul.is-open{
+    display:flex;flex-direction:column;align-items:flex-start;gap:4px;
+    position:absolute;top:72px;left:0;right:0;padding:18px 24px 26px;
+    background:rgba(8,24,32,.97);backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,.1)
+  }
+  nav.top ul.is-open li{width:100%}
+  nav.top ul.is-open a:not(.cta){display:block;padding:12px 0;font-size:1.05rem}
+  nav.top ul.is-open .cta{margin-top:12px}
 }
 @media (max-width:560px){
   .scene{height:470px}
@@ -243,7 +268,11 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:60px 0 40px;background
       Lebaneeds<small>Payments</small>
     </a>
     <nav class="top" aria-label="Primary">
-      <ul>
+      <button class="menu-btn" aria-expanded="false" aria-controls="site-menu">
+        <span class="menu-bar"></span><span class="menu-bar"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+      <ul id="site-menu">
         <li><a href="#platform">Platform</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#trust">Trust</a></li>
@@ -269,7 +298,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:60px 0 40px;background
       </div>
       <ul class="hero-stats" aria-label="Key metrics">
         <li><strong><span class="count" data-to="99.9" data-dec="1">0</span>%</strong><span>uptime target</span></li>
-        <li><strong>&lt;<span class="count" data-to="200">0</span>ms</strong><span>median API response</span></li>
+        <li><strong>&lt;<span class="count" data-to="200">0</span>ms</strong><span>API latency budget</span></li>
         <li><strong><span class="count" data-to="6">0</span></strong><span>payment method categories</span></li>
       </ul>
     </div>
@@ -277,7 +306,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:60px 0 40px;background
     <div class="scene" aria-hidden="true">
       <div class="stage" id="stage">
         <div class="pane pane-dash">
-          <div class="row"><b>Payment volume</b><span class="chipset">LIVE</span></div>
+          <div class="row"><b>Payment volume</b><span class="chipset">DEMO</span></div>
           <div class="spark">
             <svg viewBox="0 0 340 110" preserveAspectRatio="none">
               <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
@@ -450,6 +479,7 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:60px 0 40px;background
         <a href="https://connect.lebaneeds.com#security">Security</a>
         <a href="https://connect.lebaneeds.com/partners.html">Partners</a>
         <a href="mailto:partners@lebaneeds.com">Contact</a>
+        <a href="/privacy.html">Privacy Notice</a>
       </nav>
     </div>
     <div class="legal">
@@ -468,6 +498,20 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:60px 0 40px;background
   var header = document.querySelector("header");
   var onScroll = function(){ header.classList.toggle("is-scrolled", window.scrollY > 24); };
   window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+
+  /* mobile menu */
+  var menuBtn = document.querySelector(".menu-btn");
+  var menu = document.getElementById("site-menu");
+  if(menuBtn && menu){
+    menuBtn.addEventListener("click", function(){
+      var open = menu.classList.toggle("is-open");
+      menuBtn.setAttribute("aria-expanded", String(open));
+      header.classList.add("is-scrolled");
+    });
+    menu.addEventListener("click", function(e){
+      if(e.target.tagName === "A"){ menu.classList.remove("is-open"); menuBtn.setAttribute("aria-expanded","false"); }
+    });
+  }
 
   /* reveal engine */
   var io = new IntersectionObserver(function(es){
