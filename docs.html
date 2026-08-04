@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Documentation — Lebaneeds Connect</title>
+<meta name="description" content="Reference documentation for the Lebaneeds Payments API: authentication, payments, webhooks, idempotency, errors, rate limits and sandbox access.">
+<link rel="canonical" href="https://connect.lebaneeds.com/docs.html">
+<meta name="theme-color" content="#0b1f2a">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lebaneeds Connect">
+<meta property="og:title" content="API Documentation — Lebaneeds Connect">
+<meta property="og:description" content="Authentication, payments, webhooks, idempotency, errors, rate limits and sandbox access.">
+<meta property="og:url" content="https://connect.lebaneeds.com/docs.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b1f2a'/><path d='M10 8v13h12v3H7V8h3z' fill='%23ffffff'/><rect x='14' y='8' width='8' height='3' fill='%232dd4a7'/></svg>">
+<style>
+.docs-layout{display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:start}
+.docs-nav{position:sticky;top:100px;font-size:.9rem}
+.docs-nav a{display:block;padding:7px 0;color:var(--muted);text-decoration:none;border-left:2px solid var(--line);padding-left:16px}
+.docs-nav a:hover{color:var(--ink);border-left-color:var(--accent-deep)}
+.docs-body h2{margin-top:64px;font-size:1.6rem}
+.docs-body h2:first-child{margin-top:0}
+.docs-body h3{margin-top:28px;font-size:1.05rem}
+.docs-body p{color:var(--ink-soft);margin-top:12px;max-width:46em}
+.docs-body .code-window{margin-top:18px;max-width:640px}
+.docs-body table{border-collapse:collapse;margin-top:16px;font-size:.88rem;width:100%;max-width:640px}
+.docs-body th,.docs-body td{text-align:left;padding:10px 14px;border:1px solid var(--line);vertical-align:top}
+.docs-body th{background:var(--tint);font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.docs-body code{font:500 .82em var(--mono);background:var(--tint);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+.docs-note{border-left:3px solid var(--accent-deep);background:var(--accent-wash);padding:14px 18px;border-radius:0 10px 10px 0;font-size:.92rem;color:var(--ink-soft);margin-top:18px;max-width:640px}
+.method{display:inline-block;font:600 .72rem var(--mono);padding:3px 10px;border-radius:6px;margin-right:10px}
+.method-post{background:var(--accent-wash);color:var(--accent-deep)}
+.method-get{background:rgba(59,130,246,.1);color:#1d4ed8}
+@media (max-width:900px){.docs-layout{grid-template-columns:1fr}.docs-nav{position:static;display:flex;flex-wrap:wrap;gap:4px 18px}.docs-nav a{border-left:0;padding-left:0}}
+@media (prefers-color-scheme: dark){.method-get{background:rgba(125,211,252,.12);color:#7dd3fc}}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Lebaneeds Connect home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="28" height="28"><rect width="32" height="32" rx="7" fill="var(--ink)"/><path d="M10 8v13h12v3H7V8h3z" fill="#fff"/><rect x="14" y="8" width="8" height="3" fill="var(--accent)"/></svg>
+      </span>
+      <span class="brand-name">Lebaneeds<span class="brand-sub">Connect</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+      <ul class="nav-list" id="nav-list">
+        <li><a href="/#products">Products</a></li>
+        <li><a href="docs.html" aria-current="page">Docs</a></li>
+        <li><a href="/#security">Security</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="/#about">Company</a></li>
+        <li class="nav-cta"><a class="btn btn-primary btn-sm" href="#sandbox">Request Sandbox Access</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Developer Documentation</p>
+        <h1 style="font-size:clamp(1.9rem,4vw,2.8rem)">Lebaneeds Payments API</h1>
+        <p class="section-lede">A versioned REST API for creating and managing payments across every connected method. This page is the working reference for integration partners; sandbox credentials are issued during onboarding.</p>
+      </div>
+
+      <div class="docs-layout">
+        <nav class="docs-nav" aria-label="Documentation sections">
+          <a href="#authentication">Authentication</a>
+          <a href="#idempotency">Idempotency</a>
+          <a href="#payments">Payments</a>
+          <a href="#webhooks">Webhooks</a>
+          <a href="#errors">Errors</a>
+          <a href="#rate-limits">Rate limits</a>
+          <a href="#versioning">Versioning</a>
+          <a href="#sandbox">Sandbox access</a>
+        </nav>
+
+        <div class="docs-body">
+          <h2 id="authentication">Authentication</h2>
+          <p>Every request is authenticated with a secret API key sent as a bearer token. Keys are scoped per environment: <code>sk_test_…</code> for sandbox, <code>sk_live_…</code> for production. Keys can be rotated and revoked instantly from the dashboard. OAuth 2.0 client-credentials flows are available for platform partners with delegated access needs.</p>
+          <div class="code-window code-window-dark"><pre class="code"><code><span class="k">curl</span> https://api.lebaneeds.com/v1/payments \
+  -H <span class="s">"Authorization: Bearer sk_test_…"</span></code></pre></div>
+          <div class="docs-note">Never ship a secret key in client-side code. Browser and mobile integrations use the Checkout SDK, which works with publishable tokens only.</div>
+
+          <h2 id="idempotency">Idempotency</h2>
+          <p>All mutating requests accept an <code>Idempotency-Key</code> header. Retrying a request with the same key returns the original result instead of creating a duplicate — network retries can never double-charge.</p>
+          <div class="code-window code-window-dark"><pre class="code"><code>-H <span class="s">"Idempotency-Key: 4f7c2e9a-order-8412"</span></code></pre></div>
+
+          <h2 id="payments">Payments</h2>
+          <h3><span class="method method-post">POST</span>/v1/payments</h3>
+          <p>Creates a payment. The routing engine selects a connected, licensed provider based on <code>method</code>, <code>currency</code> and availability, and returns a hosted <code>checkout_url</code> where the customer completes payment.</p>
+          <div class="code-window code-window-dark"><pre class="code"><code>{
+  <span class="p">"amount"</span>: <span class="n">150000</span>,
+  <span class="p">"currency"</span>: <span class="s">"LBP"</span>,
+  <span class="p">"method"</span>: <span class="s">"wallet"</span>,
+  <span class="p">"customer"</span>: { <span class="p">"email"</span>: <span class="s">"customer@example.com"</span> },
+  <span class="p">"metadata"</span>: { <span class="p">"order_id"</span>: <span class="s">"8412"</span> }
+}</code></pre></div>
+          <table>
+            <caption class="visually-hidden">Payment request fields</caption>
+            <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+            <tr><td><code>amount</code></td><td>integer</td><td>Amount in the currency's smallest unit. Required.</td></tr>
+            <tr><td><code>currency</code></td><td>string</td><td>ISO 4217 code, e.g. <code>LBP</code>, <code>USD</code>. Required.</td></tr>
+            <tr><td><code>method</code></td><td>string</td><td><code>wallet</code>, <code>card</code>, <code>bank_transfer</code>, <code>cash</code>, <code>qr</code> — or omit to let the customer choose at checkout.</td></tr>
+            <tr><td><code>customer</code></td><td>object</td><td>Optional customer details for receipts and risk checks.</td></tr>
+            <tr><td><code>metadata</code></td><td>object</td><td>Up to 20 key–value pairs echoed back on every event.</td></tr>
+          </table>
+
+          <h3><span class="method method-get">GET</span>/v1/payments/{id}</h3>
+          <p>Retrieves a payment. Status is one of <code>pending</code>, <code>processing</code>, <code>succeeded</code>, <code>failed</code>, <code>refunded</code>.</p>
+
+          <h2 id="webhooks">Webhooks</h2>
+          <h3><span class="method method-post">POST</span>/v1/webhooks</h3>
+          <p>Registers an endpoint to receive events. Every delivery is signed with HMAC-SHA256 in the <code>Lebaneeds-Signature</code> header; verify it before acting. Failed deliveries are retried with exponential backoff for 24 hours, and events carry a monotonically increasing sequence per payment so out-of-order deliveries are detectable.</p>
+          <table>
+            <caption class="visually-hidden">Core event types</caption>
+            <tr><th>Event</th><th>Fired when</th></tr>
+            <tr><td><code>payment.succeeded</code></td><td>Funds confirmed by the provider.</td></tr>
+            <tr><td><code>payment.failed</code></td><td>The provider declined or the customer abandoned checkout.</td></tr>
+            <tr><td><code>payment.refunded</code></td><td>A refund completed on the original payment.</td></tr>
+            <tr><td><code>settlement.completed</code></td><td>The licensed partner executed settlement for a period.</td></tr>
+          </table>
+
+          <h2 id="errors">Errors</h2>
+          <p>Errors use conventional HTTP status codes with a machine-readable body.</p>
+          <div class="code-window code-window-dark"><pre class="code"><code>{
+  <span class="p">"error"</span>: {
+    <span class="p">"type"</span>: <span class="s">"invalid_request"</span>,
+    <span class="p">"code"</span>: <span class="s">"currency_not_supported"</span>,
+    <span class="p">"message"</span>: <span class="s">"Currency 'XYZ' is not supported for method 'wallet'."</span>
+  }
+}</code></pre></div>
+          <table>
+            <caption class="visually-hidden">Error status codes</caption>
+            <tr><th>Status</th><th>Meaning</th></tr>
+            <tr><td><code>400</code></td><td>Invalid request — a field is missing or malformed.</td></tr>
+            <tr><td><code>401</code></td><td>Missing or invalid API key.</td></tr>
+            <tr><td><code>402</code></td><td>The payment could not be completed.</td></tr>
+            <tr><td><code>404</code></td><td>The resource does not exist in this environment.</td></tr>
+            <tr><td><code>409</code></td><td>Idempotency conflict — same key, different payload.</td></tr>
+            <tr><td><code>429</code></td><td>Rate limit exceeded — retry after the interval in <code>Retry-After</code>.</td></tr>
+            <tr><td><code>5xx</code></td><td>Something failed on our side; safe to retry with the same idempotency key.</td></tr>
+          </table>
+
+          <h2 id="rate-limits">Rate limits</h2>
+          <p>Limits are applied per key and scale with your integration tier; responses include <code>RateLimit-Remaining</code> headers, and <code>429</code> responses include <code>Retry-After</code>. Bursts from retries with idempotency keys are always safe.</p>
+
+          <h2 id="versioning">Versioning</h2>
+          <p>The API version is part of the path (<code>/v1/</code>). Backwards-incompatible changes ship as a new version; existing versions receive advance deprecation notice to every integration partner. Additive changes (new fields, new event types) are not considered breaking — parse defensively.</p>
+
+          <h2 id="sandbox">Sandbox access</h2>
+          <p>The sandbox mirrors production behavior with test keys and simulated provider responses for every payment method. Sandbox credentials are currently issued to integration partners during onboarding rather than by self-service signup.</p>
+          <div class="docs-note">Request credentials at <a href="mailto:developers@lebaneeds.com">developers@lebaneeds.com</a> with a sentence about what you're building — a member of the engineering team responds within one business day.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/" aria-label="Lebaneeds Connect home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="26" height="26"><rect width="32" height="32" rx="7" fill="#fff"/><path d="M10 8v13h12v3H7V8h3z" fill="var(--ink)"/><rect x="14" y="8" width="8" height="3" fill="var(--accent)"/></svg>
+        </span>
+        <span class="brand-name brand-name-light">Lebaneeds<span class="brand-sub">Connect</span></span>
+      </a>
+      <p>Financial infrastructure for modern businesses.</p>
+    </div>
+    <nav class="footer-col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/#products">Payments API</a>
+      <a href="/#products">Payment Links</a>
+      <a href="/#products">Checkout SDK</a>
+      <a href="/#dashboard">Merchant Dashboard</a>
+    </nav>
+    <nav class="footer-col" aria-label="Developers">
+      <h4>Developers</h4>
+      <a href="docs.html">API Documentation</a>
+      <a href="docs.html#webhooks">Webhooks</a>
+      <a href="/#security">Security</a>
+      <a href="/#architecture">Architecture</a>
+    </nav>
+    <nav class="footer-col" aria-label="Company">
+      <h4>Company</h4>
+      <a href="/#about">About</a>
+      <a href="partners.html">For Payment Partners</a>
+      <a href="/#contact">Contact</a>
+      <a href="/privacy.html">Privacy Notice</a>
+    </nav>
+  </div>
+  <div class="container footer-legal">
+    <p>© 2026 Lebaneeds Payments · Beirut, Lebanon · <a href="mailto:partners@lebaneeds.com" style="color:inherit">partners@lebaneeds.com</a></p>
+    <p>Lebaneeds Payments is a technology company, not a bank or licensed payment institution. Regulated payment services are provided by licensed financial partners. Corporate registration details are provided during partner due diligence.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
