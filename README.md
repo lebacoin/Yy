@@ -25,3 +25,11 @@ python3 -m http.server 8000
 - Light theme first, with automatic dark mode via `prefers-color-scheme`.
 - Fully responsive (desktop → mobile), accessible (skip link, ARIA tabs, focus states, reduced-motion support).
 - Lebaneeds Payments is presented as a technology company; regulated payment services are attributed to licensed financial partners throughout the copy.
+
+## CleanWallet build plan
+
+`docs/cleanwallet/` holds the specification for **CleanWallet** — the payment-assurance workflow for
+high-value OTC crypto deals (non-custodial: dealer-held keys, read-only checks). Start at
+[`docs/cleanwallet/README.md`](docs/cleanwallet/README.md).
+
+Proposed workflow, not a live product. No backend exists in this repository.
